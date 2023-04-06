@@ -33,7 +33,8 @@ export default function RegisterCategory() {
   useEffect(()=>{
     setTimeout(() => {
       const URL = window.location.hostname.includes('localhost') 
-       && 'http://localhost:3000/categories/';
+       ? 'http://localhost:3000/categories/'
+       : 'https://helptechflix-server.herokuapp.com/categories/';
 
       fetch(URL).then(res => res.json()).then(data => setCategories([...data]));
 
