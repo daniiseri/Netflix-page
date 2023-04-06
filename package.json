@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "start": "npm run server",
+    "start": "node ./server.js",
     "server": "json-server --watch db.json",
     "dev": "concurrently \"vite\" \"npm run server\"",
     "build": "vite build",
