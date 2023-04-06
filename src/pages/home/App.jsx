@@ -1,7 +1,8 @@
-import dadosiniciais from './data/dados_iniciais.json';
-import BannerMain from './components/BannerMain';
-import Carrousel from './components/Carousel';
-import Header from './components/Header';
+import dadosiniciais from '../../data/dados_iniciais.json';
+import BannerMain from '../../components/BannerMain';
+import Carrousel from '../../components/Carousel';
+import Header from '../../components/Header';
+import Footer from '../../components/Footer';
 
 function App() {
 
@@ -26,6 +27,8 @@ function App() {
       <Carrousel category={dadosiniciais.categorias[4]} ignoreFirstVideo/>
 
       <Carrousel category={dadosiniciais.categorias[5]} ignoreFirstVideo/>
+
+      <Footer/>
     </div>
   )
 }
