@@ -9,6 +9,6 @@ module.exports = {
     ecmaVersion: "latest",
     sourceType: "module",
   },
-  plugins: ["react"],
+  plugins: ["react", "react/jsx-runtime"],
   rules: {},
 };
