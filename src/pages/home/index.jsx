@@ -22,7 +22,7 @@ function App() {
       }
 
       {
-        initData.map((category, index) => {
+        initData?.map((category, index) => {
         if(index === 0)
         {
           return (
