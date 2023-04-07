@@ -9,8 +9,9 @@ function Footer() {
     <FooterBase>
       <Link to="/">
         <img style={{
-          scale: '.25'
-          }} 
+          scale: '.25',
+          maxWidth: '100%'
+        }}
           src={Logo} alt="Logo HelpTechFlix" 
         />
       </Link>

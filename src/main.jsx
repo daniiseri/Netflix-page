@@ -1,16 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './pages/home/App';
+import Home from './pages/home';
 
 import Header from './components/Header';
 import RegisterVideo from './pages/register/video';
-import RegisterCategory from './pages/register/categoria';
+import RegisterCategory from './pages/register/category';
 
 import './index.css';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function NotFound(){
+
   return(
     <div style={{
       height: '100vh',
@@ -34,7 +35,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
     <React.StrictMode>
       <Routes>
-        <Route path='/' Component={App}/>
+        <Route path='/' Component={Home}/>
         <Route path='/register/video' Component={RegisterVideo}/>
         <Route path='/register/category' Component={RegisterCategory}/>
         <Route path='*' Component={NotFound} />

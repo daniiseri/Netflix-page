@@ -61,7 +61,6 @@ const Input = styled.input`
   }
 
   ${({ hasValue }) => {
-    console.log(hasValue);
     
     return hasValue && css`
         &:not([type='color']) + ${Label.Text} {
@@ -72,26 +71,50 @@ const Input = styled.input`
   }
 `;
 
-function Field({label, type, name, value, onChange}){
+function Field({label, type, name, value, onChange, suggestions, required}){
+  const id = `id_${name}`;
   const isTypeTextArea = type === 'textarea';
-  const tag = isTypeTextArea ? 'textarea': 'input'
+  const tag = isTypeTextArea ? 'textarea': 'input';
 
   const hasValue = Boolean(value.length);
+  const hasSuggestion = Boolean(suggestions?.length);
 
   return (
     <Wrapper>
-      <Label>
+      <Label
+        htmlFor={id}
+      >
         <Input
           as={tag} 
+          id={id}
           hasValue={hasValue}
           type={type}
           value={value}
           name={name}
           onChange={onChange}
+          list={hasSuggestion ? `suggestion_${id}` : undefined}
+          autoComplete={hasSuggestion ? 'off' : 'on'}
+          required={required ? true : false} 
         />
         <Label.Text>
           {label}: 
         </Label.Text>
+        {
+          hasSuggestion && (
+            <datalist id={`suggestion_${id}`}>
+              {
+                suggestions.map((suggestion, index) => {
+                  return(
+                    <option key={index} value={suggestion}>
+                      {suggestion}
+                    </option>
+                  )
+                })
+              }
+            </datalist>
+          )
+        }
+        
       </Label>
     </Wrapper>
   )
@@ -109,6 +132,7 @@ Field.propTypes = {
   name: PropTypes.string.isRequired, 
   value: PropTypes.string, 
   onChange: PropTypes.func,
+  suggestions: PropTypes.arrayOf(PropTypes.string)
 };
 
 export default Field;
