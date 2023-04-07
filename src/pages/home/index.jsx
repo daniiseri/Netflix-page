@@ -2,16 +2,15 @@ import { useEffect, useState } from 'react';
 import BannerMain from '../../components/BannerMain';
 import Carrousel from '../../components/Carousel';
 import Default from '../../components/PageDefault';
+import categoriesRepositories from '../../repositories/categories';
 
 function App() {
   const [initData, setInitData] = useState([]);
 
   useEffect(() => {
-    const URL = window.location.hostname.includes('localhost')
-      ? 'http://localhost:3000/categories?_embed=videos'
-      : 'https://helptechflix-server.herokuapp.com/categories/';
-
-    fetch(URL).then((res) => res.json()).then((data) => setInitData([...data]));
+    categoriesRepositories.getAllCategoriesWithVideos().then((data) => {
+      setInitData(data);
+    })
   }, []);
 
   return (
@@ -26,8 +25,8 @@ function App() {
             return (
               <div key={category.id}>
                 <BannerMain
-                  videoTitle={initData[0].title}
-                  url={initData[0].videos[0].url}
+                  videoTitle={category.title}
+                  url={category.videos[0].url}
                   videoDescription="O que é front-end"
                 />
 
